@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const PORT = process.env.PORT || 8080;
 //app imports
 const authRoutes = require('./routes/authentication-routes');
 const dashboardRoutes = require('./routes/dashboard-routes')
@@ -34,9 +35,8 @@ mongoose
   })
   .then(result => {
     console.log('CONNECTED')
-    port = process.env.PORT || 8080
-    app.listen(port, () => {
-      console.log(`Server is running on port:${port}`);
+    app.listen(PORT, () => {
+      console.log(`Server is running on port:${PORT}`);
     });
   })
   .catch(err => console.log(err));
