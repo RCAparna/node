@@ -1,0 +1,7 @@
+{
+  "env": {
+    "MONGO_USER": "aparna-node-poc",
+    "MONGO_PASSWORD": "mongopassword",
+    "MONGO_DEFAULT_DATABASE": "nodeDB"
+  }
+}

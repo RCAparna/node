@@ -5,7 +5,8 @@ const PORT = process.env.PORT || 8080;
 const authRoutes = require('./routes/authentication-routes');
 const dashboardRoutes = require('./routes/dashboard-routes')
 const app = express();
-const ATLAS_URI = 'mongodb+srv://aparna-node-poc:mongopassword@cluster0.hdtif.mongodb.net/nodeDB'
+const ATLAS_URI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD
+  }@cluster0.hdtif.mongodb.net/${process.env.MONGO_DEFAULT_DATABASE}`;
 
 app.use(express.json());
 
