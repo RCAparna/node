@@ -1,12 +1,15 @@
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const PORT = process.env.PORT || 8080;
 //app imports
 const authRoutes = require('./routes/authentication-routes');
-const dashboardRoutes = require('./routes/dashboard-routes')
-const app = express();
+const dashboardRoutes = require('./routes/dashboard-routes');
 const ATLAS_URI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD
   }@cluster0.hdtif.mongodb.net/${process.env.MONGO_DEFAULT_DATABASE}`;
+const app = express();
+app.use(cors());
+
 
 app.use(express.json());
 
@@ -17,6 +20,7 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   next();
 });
+app.options('*', cors());
 app.use('/auth', authRoutes);
 app.use('/dashboard', dashboardRoutes);
 
